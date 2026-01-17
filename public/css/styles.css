@@ -4,3 +4,149 @@
 *:after {
   box-sizing: border-box;
 }
+
+#welcome {
+  font-size: 40pt;
+  color: black;
+  margin-top: 20px;
+}
+header {
+  display: flex;
+  color: white;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  font-size: 35px;
+  padding: 5px 15px;
+}
+
+header a {
+  color: black;
+  text-decoration: none;
+}
+#tools {
+  margin-left: auto;
+  font-size: 20px;
+}
+nav ul {
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+  overflow: hidden; 
+  background-color: #000000; 
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+nav a { 
+  display: flex;
+  padding: 0.8rem; 
+  text-decoration: none; 
+  color: white; 
+  font-size: 18pt;
+  justify-self: center;
+}
+
+#hero-section {
+  height: 400px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  margin-bottom: 20px;
+}
+
+
+#hero-box {
+  grid-column: 2/3;
+  grid-row: 2/6;
+  font-size: 20pt;
+  padding: 5px;
+  color: aqua;
+  width: 200px;
+  border: #000000 2px solid;
+  background-color: rgba(255, 255, 255, 0.7);
+
+}
+
+#hero-section img {
+  grid-column: 2 / 5; 
+  grid-row: 1 / 6;    
+  width: 80%;
+  height: 100%;
+}
+
+#main-product-p, #main-product-button {
+  opacity: 5;
+}
+#details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+#upgrades {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#upgrades div {
+  justify-self: center;
+}
+#upgrades-header {
+  grid-column: 1 / 3;
+}
+
+#upgrades img {
+  width: 75px;
+  height: 50px;
+}
+.upgrade-img-div img {
+  justify-self: center;
+}
+
+.upgrade-img-div {
+  width: 150px;
+  height: 75px;
+  background-color: aqua;
+  align-content: center;
+}
+
+#reviews {
+  margin-top: 20px;
+  font-size: 18pt;
+  /* list-style: decimal; */
+}
+
+#ham-btn {
+  display: none;
+}
+
+@media only screen and (max-width:500px) {
+    #hero-section {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, 1fr);
+    }
+    
+    #hero-box {
+      grid-column: 1 / 3;
+      grid-row: 4 / 6;
+      width: 100%;
+    }
+    
+    #hero-section img {
+      grid-column: 1 / 3; 
+      grid-row: 1 / 4;    
+      width: 100%;
+      height: auto;
+    }
+    #details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  #ham-btn  {
+    display: block;
+    height: 30px;
+  }
+  nav ul{
+      display: grid;
+      grid-template-columns: 1fr;
+  }
+}
