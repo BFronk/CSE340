@@ -3,21 +3,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const heroModal = document.getElementById('hero-modal');
     const closeBtn = document.getElementById('close-btn');
 
-    modalBtn.addEventListener("click", () => {
-        heroModal.showModal();
-    });
+    if (modalBtn && heroModal) {
+        modalBtn.addEventListener("click", () => {
+            heroModal.showModal();
+        });
+    }
 
-    closeBtn.addEventListener("click", () => {
-        heroModal.close();  
-    });
-});
-
-// Hamburger Menu Toggle
-document.addEventListener("DOMContentLoaded", () => {
+    if (closeBtn && heroModal) {
+        closeBtn.addEventListener("click", () => {
+            heroModal.close();  
+        });
+    }
+    
+    // Hamburger Menu Toggle
     const hamBtn = document.getElementById('ham-btn');
     const nav = document.querySelector('nav ul');
 
-    hamBtn.addEventListener("click", () => {
-        nav.classList.toggle('open');
-    });
+    if (hamBtn && nav) {
+        hamBtn.addEventListener("click", () => {
+            nav.classList.toggle('open');
+        });
+    }
 });
