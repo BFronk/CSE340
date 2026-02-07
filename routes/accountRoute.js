@@ -1,0 +1,27 @@
+const express = require("express")
+const router = express.Router()
+const utilities = require("../utilities")
+const accountController = require("../controllers/accController")
+const regValidate = require('../utilities/account-validation')
+
+// Deliver login view
+router.get(
+  "/login",
+  utilities.handleErrors(accountController.buildLogin)
+)
+
+// Deliver register view  ✅ THIS ONE IS OFTEN MISSING
+router.get(
+  "/register",
+  utilities.handleErrors(accountController.buildRegister)
+)
+
+// Process registration
+router.post(
+  "/register",
+  regValidate.registationRules(),
+  regValidate.checkRegData,
+  utilities.handleErrors(accountController.registerAccount)
+)
+
+module.exports = router

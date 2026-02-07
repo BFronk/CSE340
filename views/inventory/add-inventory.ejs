@@ -1,0 +1,44 @@
+<h1><%= title %></h1>
+
+<%- messages() %>
+
+<% if (errors) { %>
+  <ul>
+    <% errors.forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<form action="/inv/add-inventory" method="post">
+
+  <label>Make</label>
+  <input name="inv_make" required value="<%= inv_make || '' %>">
+
+  <label>Model</label>
+  <input name="inv_model" required value="<%= inv_model || '' %>">
+
+  <label>Year</label>
+  <input name="inv_year" required value="<%= inv_year || '' %>">
+
+  <label>Description</label>
+  <textarea name="inv_description"><%= inv_description || '' %></textarea>
+
+  <label>Price</label>
+  <input name="inv_price" required value="<%= inv_price || '' %>">
+
+  <label>Miles</label>
+  <input name="inv_miles" required value="<%= inv_miles || '' %>">
+
+  <label>Color</label>
+  <input name="inv_color" required value="<%= inv_color || '' %>">
+
+  <label>Classification</label>
+  <%- classificationList %>
+
+  <!-- Default images per assignment -->
+  <input type="hidden" name="inv_image" value="/images/no-image.png">
+  <input type="hidden" name="inv_thumbnail" value="/images/no-image-tn.png">
+
+  <button type="submit">Add Inventory Item</button>
+</form>

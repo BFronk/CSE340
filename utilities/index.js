@@ -81,6 +81,26 @@ utilities.buildClassificationGrid = async function(data){
   }
   return grid
 }
+utilities.buildClassificationList = async function (classification_id = null) {
+  const data = await invModel.getClassifications()
+  let list =
+    '<select name="classification_id" id="classificationList" required>'
+  list += "<option value=''>Choose a Classification</option>"
+
+  data.rows.forEach((row) => {
+    list += `<option value="${row.classification_id}"`
+    if (
+      classification_id != null &&
+      row.classification_id == classification_id
+    ) {
+      list += " selected"
+    }
+    list += `>${row.classification_name}</option>`
+  })
+
+  list += "</select>"
+  return list
+}
 
 // Build the vehicle detail HTML
 utilities.buildVehicleDetail = function (vehicle) {
@@ -100,6 +120,36 @@ utilities.buildVehicleDetail = function (vehicle) {
   `
 }
  
+
+utilities.buildAccountLoginGrid = async function(data){
+  let grid
+  if(data.length > 0){
+    grid = '<form id="loginForm" action="login.html" class="joinPage">'
+    grid += '<label for="account_email">  email:'
+    grid +=       '<input type="text" id="account_email" name="firstName" required>'
+    grid +=       '</label>'
+    grid +=       ''
+    grid +=       ''
+    grid +=       '<label for="password">password:</label>'
+    grid +=       '<input type="text" id="password" name="password" required>'
+    grid +=       ''
+    grid +='</form>'
+  }
+}
+utilities.buildLogin = async function(req, res, next) {
+    let nav = await utilities.getNav()
+    res.render("account/login", {
+        title: "Login",
+        nav,
+        errors: null,
+    })
+}
+
+utilities.handleErrors = (fn) => {
+  return function (req, res, next) {
+    Promise.resolve(fn(req, res, next)).catch(next)
+  }
+}
 module.exports = utilities
 
 
